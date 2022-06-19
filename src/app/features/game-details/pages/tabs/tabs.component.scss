@@ -1,0 +1,32 @@
+@use '../../../../../styles/mixins';
+
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+
+  &__item {
+    background-color: var(--orange);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+
+    &:hover {
+      background-color: var(--black);
+    }
+
+    &.active {
+      background-color: var(--black);
+    }
+  }
+
+  &__link {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--primary);
+    @include mixins.text;
+  }
+}

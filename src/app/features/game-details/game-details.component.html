@@ -1,0 +1,26 @@
+<div class="details__wrapper" *ngIf="gameDetails">
+  <div class="details__game-banner" [ngStyle]="{'background-color': gameDetails.dominant_color}">
+    <img *ngIf="gameDetails.background_image" [src]="gameDetails.background_image" alt="{{gameDetails.name}}">
+  </div>
+  <div class="details__content">
+    <header class="details__header">
+      <div class="details__header-meta">
+        <div class="details__header-release-date">{{gameDetails.released | date}}</div>
+        <div class="details__header-platforms">
+          <ul class="details__platforms">
+            <li class="details__platform" *ngFor="let platform of gameDetails.parent_platforms ">
+              {{platform.platform.name}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="details__title-wrapper">
+        <h2 class="details__title">{{gameDetails.name}}</h2>
+      </div>
+      <!--    <div class="details__rating-diagram">-->
+      <!--      <div class="details__stat"></div>-->
+      <!--    </div>-->
+    </header>
+    <app-tabs [id]="gameId"></app-tabs>
+  </div>
+</div>

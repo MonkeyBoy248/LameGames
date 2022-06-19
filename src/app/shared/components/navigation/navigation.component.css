@@ -1,0 +1,32 @@
+:host {
+  max-width: 200px;
+  width: 100%;
+}
+
+.nav {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 0;
+  border-right: 2px solid var(--orange);
+}
+
+.navigation__item {
+  color: var(--black);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+}
+.navigation__item:hover {
+  color: var(--orange);
+}
+.navigation__item.active {
+  color: var(--orange);
+}
+
+/*# sourceMappingURL=navigation.component.css.map */

@@ -1,0 +1,31 @@
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+}
+.tabs__item {
+  background-color: var(--orange);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.tabs__item:hover {
+  background-color: var(--black);
+}
+.tabs__item.active {
+  background-color: var(--black);
+}
+.tabs__link {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: var(--primary);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+/*# sourceMappingURL=tabs.component.css.map */

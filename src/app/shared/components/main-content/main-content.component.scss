@@ -1,0 +1,15 @@
+@use '../../../../styles/_mixins';
+
+.main {
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__items-container {
+    display: grid;
+    grid-template-columns: repeat(3, 280px);
+    //grid-auto-rows: minmax(300px, 350px);
+    grid-gap: 24px;
+  }
+}

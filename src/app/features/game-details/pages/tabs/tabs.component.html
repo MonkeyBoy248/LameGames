@@ -1,0 +1,6 @@
+<ul class="tabs">
+  <li class="tabs__item" *ngFor="let tab of tabs" [ngClass]="{'active': isLinkActive(link)}">
+    <a class="tabs__link" #link [routerLink]="[tab.link]" routerLinkActive="active" [relativeTo]="this.route">{{tab.title}}</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

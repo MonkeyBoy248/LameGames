@@ -1,0 +1,82 @@
+.dev-card__template {
+  width: 100%;
+  height: fit-content;
+  border-radius: 20px;
+  color: var(--primary);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.dev-card__template:hover {
+  transform: scale(1.05);
+}
+.dev-card__info-wrapper {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0;
+}
+.dev-card__text-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.dev-card__name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  max-width: 80%;
+}
+.dev-card__count-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+.dev-card__games-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 24px;
+  background-color: var(--primary);
+  color: var(--black);
+}
+.dev-card__popular-items {
+  list-style: none;
+  margin: 0;
+  padding: 0 20px;
+  width: 100%;
+}
+.dev-card__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.dev-card__item:last-child {
+  margin-bottom: 0;
+}
+.dev-card__popular-title {
+  font-size: 16px;
+  font-weight: 600;
+  max-width: 70%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*# sourceMappingURL=card-dev.component.css.map */

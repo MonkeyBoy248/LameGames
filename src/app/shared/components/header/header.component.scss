@@ -1,0 +1,108 @@
+@use "../../../../styles/mixins";
+
+:host {
+  max-width: 1920px;
+  width: 100%;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.header {
+  &__wrapper {
+    padding: 48px 40px;
+    display: flex;
+    align-items: center;
+    gap: 107px;
+  }
+
+  &__logo {
+    @include mixins.logo;
+    text-decoration: none;
+  }
+
+  &__logo-start {
+    color: var(--black);
+  }
+
+  &__logo-end {
+    color: var(--orange);
+  }
+
+  &__search-area {
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-inline: 24px;
+    padding-top: 11px;
+    padding-bottom: 10px;
+    background-color: var(--grey);
+    color: var(--primary);
+    border-radius: 20px;
+    border: none;
+    transition: .3s ease-in-out;
+
+    &:hover, &:hover input {
+      background-color: var(--black);
+      opacity: 1;
+    }
+
+    &:focus-within, &:focus-within input {
+      outline: none;
+      background-color: var(--black);
+      opacity: 1;
+    }
+
+    &_transparent {
+      opacity: 0.4;
+    }
+  }
+
+  &__search-form {
+    width: 100%;
+    max-width: 660px;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__search-svg-wrapper {
+    width: 16px;
+    height: 16px;
+
+    svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--primary);
+    }
+  }
+
+  &__search-input {
+    width: 100%;
+    padding-inline: 24px;
+    background-color: var(--grey);
+    color: var(--primary);
+    border-radius: 20px;
+    border: none;
+    transition: .3s ease-in-out;
+
+    &::placeholder {
+      color: var(--primary);
+    }
+  }
+
+  &__submit-button {
+    border: none;
+    border-radius: 10px;
+    padding: 5px 8px;
+    color: var(--black);
+    cursor: pointer;
+    background-color: var(--primary);
+    transition: .3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

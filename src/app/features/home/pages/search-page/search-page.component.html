@@ -1,0 +1,4 @@
+<app-main-content [data]="games" *ngIf="!isEmpty else cardsEmpty"></app-main-content>
+<ng-template #cardsEmpty>
+  <p class="search__card-empty-message">{{'Nothing found' | uppercase}}
+</ng-template>

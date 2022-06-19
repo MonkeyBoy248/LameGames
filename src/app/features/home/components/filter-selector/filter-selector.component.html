@@ -1,0 +1,11 @@
+<div class="dropdown__wrapper">
+  <button class="filter__button" (click)="showDropdown()">
+    <p class="filter__button-text">
+      Ordered by: <span class="filter__current-option">{{optionText}}</span>
+    </p>
+    <img class="filter__open-icon" src="../../../../../assets/icons/arrow-down.svg" alt="Open">
+  </button>
+  <ul class="dropdown__list" *ngIf="isOpen">
+      <li class="dropdown__list-item" [class.active]="optionText === option" (click)="setOrdering(option)" *ngFor="let option of dropdownOptions">{{option}}</li>
+  </ul>
+</div>

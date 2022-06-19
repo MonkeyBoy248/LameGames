@@ -1,0 +1,17 @@
+<div class="main__wrapper">
+  <div class="main__items-container">
+    <ng-container *ngFor="let item of data.results; trackBy: trackById" [ngSwitch]="data.cardType">
+      <app-card-game *ngSwitchCase="'game'" [game]="item"></app-card-game>
+      <app-card-dev *ngSwitchCase="'dev'" [dev]="item"></app-card-dev>
+      <app-card-dev *ngSwitchCase="'platform'" [dev]="item"></app-card-dev>
+    </ng-container>
+  </div>
+</div>
+
+
+
+<!--<div class="main__wrapper" *ngIf="!isGrid">-->
+<!--  <div class="main__items-container" *ngFor="let game of allGames" >-->
+<!--    <app-card [game]="game"></app-card>-->
+<!--  </div>-->
+<!--</div>-->

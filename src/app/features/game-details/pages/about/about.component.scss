@@ -1,0 +1,95 @@
+@use '../../../../../styles/mixins';
+
+._metadata {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+._metadata_wide {
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+._metadata-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+._meta-title {
+  font-size: 14px;
+  color: var(--grey);
+  margin-bottom: 8px;
+}
+
+.about {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    gap: 20px;
+  }
+
+  &__description-title {
+    @include mixins.text;
+    color: var(--black);
+    margin-bottom: 30px;
+  }
+
+  &__description {
+    max-width: 600px;
+    margin-bottom: 30px;
+  }
+
+  &__description-text {
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--black);
+  }
+
+  &__developers {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.meta {
+  &__metadata {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  &__metascore {
+    border-radius: 50%;
+    width: fit-content;
+    padding: 12px;
+    font-size: 20px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+  }
+
+  &__tag-list {
+    gap: 10px;
+  }
+
+  &__tag {
+    padding: 8px;
+    color: var(--primary);
+    background-color: var(--black);
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  &__website-link {
+    color: var(--black);
+    font-size: 16px;
+  }
+}

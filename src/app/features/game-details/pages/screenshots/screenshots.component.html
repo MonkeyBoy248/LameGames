@@ -1,0 +1,21 @@
+<div class="screenshots__wrapper">
+  <div class="screenshots__item" *ngFor="let screenshot of gameScreenshots; let index = index" (click)="openFullScreen(screenshot.image, index)">
+    <img  class="screenshots__img" [src]="screenshot.image" [alt]="'image' + screenshot.id">
+  </div>
+  <div class="screenshots__full-size-wrapper" *ngIf="isFullScreenOpen">
+    <button class="screenshots__close-btn" (click)="closeFullScreen()">
+      <span class="screenshots__close-svg-wrapper">
+        <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g data-name="Layer 2"><g data-name="close"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"/>
+            <path d="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"/>
+          </g>
+          </g>
+        </svg>
+      </span>
+    </button>
+    <app-slider [screenshots]="gameScreenshots" [activeSlideIndex]="activeIndex"></app-slider>
+  </div>
+</div>
+<ng-template #screenshotsEmpty>
+  <p class="screenshots__empty-message">{{'No screenshots found' | uppercase}}</p>
+</ng-template>

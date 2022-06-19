@@ -1,0 +1,22 @@
+<div class="game-card__template" (click)="showGameDetails(game.id)">
+  <figure class="game-card__image-wrapper" *ngIf="game.background_image else noSrc">
+    <img [src]="game.background_image" alt="Image">
+  </figure>
+  <div class="game-card__info-wrapper">
+    <div class="game-card__base-info">
+      <ul class="game-card__platforms-list">
+        <li class="game-card__platform" *ngFor="let gamePlatform of game.parent_platforms | slice:0:4">
+          <img src="../assets/icons/{{gamePlatform.platform.slug}}.svg" [alt]="gamePlatform.platform.slug">
+        </li>
+        <span *ngIf="game.parent_platforms && game.parent_platforms.length > 4">+{{game.parent_platforms.length - 4}}</span>
+      </ul>
+      <div class="game-card__rating" *ngIf="game.metacritic">{{game.metacritic}}</div>
+    </div>
+    <p class="game-card__name">{{game.name}}</p>
+  </div>
+</div>
+<ng-template #noSrc>
+  <div class="game-card__no-src">
+    <p class="game-card__no-src-message">{{'Image not found' | uppercase}}</p>
+  </div>
+</ng-template>

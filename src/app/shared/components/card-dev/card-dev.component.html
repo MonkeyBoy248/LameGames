@@ -1,0 +1,15 @@
+<div class="dev-card__template" [ngStyle]="{'background-image': 'url(' + dev.image_background + ')'}">
+  <div class="dev-card__info-wrapper">
+    <div class="dev-card__name">{{dev.name}}</div>
+    <div class="dev-card__text-wrapper">
+      <p class="dev-card__count-title">{{'Popular Games' | uppercase}}</p>
+      <div class="dev-card__games-count">{{dev.games_count | integerFormat}}</div>
+    </div>
+    <ul *ngIf="dev.games" class="dev-card__popular-items">
+      <li class="dev-card__item" *ngFor="let game of dev.games.slice(0, 3)">
+        <div class="dev-card__popular-title">{{game.name}}</div>
+        <div class="dev-card__people-added">{{game.added | integerFormat}}</div>
+      </li>
+    </ul>
+  </div>
+</div>
