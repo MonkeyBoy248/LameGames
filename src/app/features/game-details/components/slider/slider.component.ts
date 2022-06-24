@@ -17,7 +17,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit () {
-    this.slideWidth = this.slides.nativeElement.offsetWidth ;
+    this.slideWidth = this.slides.nativeElement.getBoundingClientRect().width;
     this.moveToActiveSlide();
   }
 

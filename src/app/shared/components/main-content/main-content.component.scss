@@ -3,12 +3,13 @@
 .main {
   &__wrapper {
     width: 100%;
+    max-width: 960px;
     height: 100%;
   }
 
   &__items-container {
     display: grid;
-    grid-template-columns: repeat(3, 280px);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     //grid-auto-rows: minmax(300px, 350px);
     grid-gap: 24px;
   }

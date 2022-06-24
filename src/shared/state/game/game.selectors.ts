@@ -1,6 +1,6 @@
 import {GameState} from "./game.state";
 import {Selector} from '@ngxs/store'
-import {Details, GameStateModel, Queried} from "./game-state.model";
+import {GameStateModel} from "./game-state.model";
 import {Game, Screenshot, Trailer} from "../../../app/shared/interfaces/game";
 
 export class GameSelectors {
