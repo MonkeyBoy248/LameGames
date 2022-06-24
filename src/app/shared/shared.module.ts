@@ -9,7 +9,6 @@ import {NavigationComponent} from "./components/navigation/navigation.component"
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
-import { ArraySortPipe } from './pipes/array-sort.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { ArraySortPipe } from './pipes/array-sort.pipe';
     HeaderComponent,
     NavigationComponent,
     SidebarComponent,
-    ArraySortPipe
   ],
   imports: [
     CommonModule,
