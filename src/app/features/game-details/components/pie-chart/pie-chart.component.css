@@ -1,0 +1,15 @@
+.pie {
+  fill: none;
+}
+.pie__wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+.pie__section {
+  stroke-width: 5px;
+  fill: none;
+  stroke-dasharray: 20px;
+}
+
+/*# sourceMappingURL=pie-chart.component.css.map */

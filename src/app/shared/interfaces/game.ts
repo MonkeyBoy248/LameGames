@@ -13,6 +13,7 @@ export interface Game {
   background_image: string;
   dominant_color: string;
   rating: number;
+  ratings: Ratings[];
   rating_top: number;
   metacritic: number;
   description_raw: string;
@@ -71,5 +72,12 @@ export interface Trailer {
     480: string;
     max: string;
   }
+}
+
+export interface Ratings {
+  id: number;
+  title: string;
+  count: number;
+  percent: number;
 }
 

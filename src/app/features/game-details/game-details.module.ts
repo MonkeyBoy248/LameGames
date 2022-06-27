@@ -9,6 +9,8 @@ import {TrailersComponent} from "./pages/trailers/trailers.component";
 import {ScreenshotsComponent} from "./pages/screenshots/screenshots.component";
 import {SharedModule} from "../../shared/shared.module";
 import { SliderComponent } from './components/slider/slider.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { ChartLegendComponent } from './components/chart-legend/chart-legend.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { SliderComponent } from './components/slider/slider.component';
     AboutComponent,
     TrailersComponent,
     ScreenshotsComponent,
-    SliderComponent
+    SliderComponent,
+    PieChartComponent,
+    ChartLegendComponent,
   ],
   imports: [
     CommonModule,

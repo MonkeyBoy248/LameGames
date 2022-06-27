@@ -32,6 +32,10 @@
     gap: 20px;
   }
 
+  &__data-wrapper {
+    max-width: 60%;
+  }
+
   &__description-title {
     @include mixins.text;
     color: var(--black);
@@ -39,7 +43,7 @@
   }
 
   &__description {
-    max-width: 600px;
+    max-width: 80%;
     margin-bottom: 30px;
   }
 

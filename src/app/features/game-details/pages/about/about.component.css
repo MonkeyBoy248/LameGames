@@ -28,6 +28,9 @@
   margin-top: 30px;
   gap: 20px;
 }
+.about__data-wrapper {
+  max-width: 60%;
+}
 .about__description-title {
   font-style: normal;
   font-weight: 700;
@@ -37,7 +40,7 @@
   margin-bottom: 30px;
 }
 .about__description {
-  max-width: 600px;
+  max-width: 80%;
   margin-bottom: 30px;
 }
 .about__description-text {

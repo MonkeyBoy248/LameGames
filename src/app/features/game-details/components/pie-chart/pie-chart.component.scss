@@ -1,0 +1,15 @@
+.pie {
+  fill: none;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+  }
+
+  &__section {
+    stroke-width: 5px;
+    fill: none;
+    stroke-dasharray: 20px;
+  }
+}

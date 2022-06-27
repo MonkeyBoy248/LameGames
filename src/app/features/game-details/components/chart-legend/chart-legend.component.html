@@ -1,0 +1,11 @@
+<div class="legend__wrapper">
+  <ul class="legend__caption-list">
+    <li class="legend__caption-item" *ngFor="let data of chartData; let index = index">
+      <div class="legend__marker" [ngStyle]="{'background-color': sectionColors[data.title]}"></div>
+      <div class="legend__caption-label">
+        {{data.title | titlecase}}
+      </div>
+      <div class="legend__caption-count">{{data.count}}</div>
+    </li>
+  </ul>
+</div>

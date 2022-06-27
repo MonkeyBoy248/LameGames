@@ -1,0 +1,27 @@
+.legend__caption-list {
+  list-style: none;
+}
+.legend__caption-item {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  gap: 1.25em;
+}
+.legend__caption-item:last-child {
+  margin-bottom: 0;
+}
+.legend__marker {
+  width: 0.75em;
+  height: 0.75em;
+  border-radius: 50%;
+}
+.legend__caption-label {
+  font-size: 1em;
+  font-weight: 700;
+}
+.legend__caption-count {
+  color: #878787;
+  font-size: 0.875em;
+}
+
+/*# sourceMappingURL=chart-legend.component.css.map */

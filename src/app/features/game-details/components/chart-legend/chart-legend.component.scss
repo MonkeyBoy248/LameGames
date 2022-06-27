@@ -1,0 +1,32 @@
+.legend {
+  &__caption-list {
+    list-style: none;
+  }
+
+  &__caption-item {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: 1.25em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__marker {
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+  }
+
+  &__caption-label {
+    font-size: 1em;
+    font-weight: 700;
+  }
+
+  &__caption-count {
+    color: #878787;
+    font-size: 0.875em;
+  }
+}
