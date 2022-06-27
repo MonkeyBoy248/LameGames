@@ -1,5 +1,6 @@
 .trailers__wrapper {
-  margin-top: 40px;
+  margin: 40px 0;
+  gap: 40px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -7,10 +8,9 @@
   justify-content: center;
 }
 .trailers__item {
-  width: 600px;
-  height: 400px;
+  max-width: 600px;
+  max-height: 400px;
   border-radius: 10px;
-  margin-bottom: 50px;
   position: relative;
 }
 .trailers__item video {

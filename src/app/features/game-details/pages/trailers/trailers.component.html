@@ -1,7 +1,7 @@
 <div class="trailers__wrapper">
   <p class="trailers__empty-message" *ngIf="!trailers.length">{{'No trailers found' | uppercase}}</p>
   <div class="trailers__item" *ngFor="let trailer of trailers" [ngStyle]="{'background-image': 'url(' + trailer.preview + ')'}">
-    <video class="trailers__video" controls>
+    <video class="trailers__video" [poster]="trailer.preview" controls>
       <source [src]="trailer.data.max" type="video/mp4">
     </video>
     <p class="trailers__title">{{trailer.name}}</p>
