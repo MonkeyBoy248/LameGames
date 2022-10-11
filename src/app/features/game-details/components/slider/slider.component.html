@@ -1,24 +1,26 @@
 <div class="slider__wrapper">
   <div class="slider__slides-wrapper">
-    <button class="slider__prev-btn"
-            *ngIf="activeSlideIndex > 0"
-            (click)="showPreviousSlide()">
-      <svg width="12px" height="12px" viewBox="0 0 12 12" enable-background="new 0 0 12 12" id="Слой_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon fill="#1D1D1B" points="8.1464844,12 2.1464844,6 8.1464844,0 8.8535156,0.7070313 3.5605469,6 8.8535156,11.2929688 "/></svg>
-    </button>
-    <button class="slider__next-btn"
-            *ngIf="activeSlideIndex < screenshots.length - 1"
-            (click)="showNextSlide()"
-    >
-      <svg width="12px" height="12px" viewBox="0 0 12 12" enable-background="new 0 0 12 12" id="Слой_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon fill="#1D1D1B" points="8.1464844,12 2.1464844,6 8.1464844,0 8.8535156,0.7070313 3.5605469,6 8.8535156,11.2929688 "/></svg>
-    </button>
-    <ul class="slider__slides" #slides>
-      <li class="slider__slide"
-          data-active *ngFor="let screenshot of screenshots; let index = index"
-          [ngClass]="{'slider__slide_active': activeSlideIndex === index}"
+    <div class="slider__slides-container">
+      <button class="slider__prev-btn"
+              *ngIf="activeSlideIndex > 0"
+              (click)="showPreviousSlide()">
+        <svg width="12px" height="12px" viewBox="0 0 12 12" enable-background="new 0 0 12 12" id="Слой_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon fill="#1D1D1B" points="8.1464844,12 2.1464844,6 8.1464844,0 8.8535156,0.7070313 3.5605469,6 8.8535156,11.2929688 "/></svg>
+      </button>
+      <button class="slider__next-btn"
+              *ngIf="activeSlideIndex < screenshots.length - 1"
+              (click)="showNextSlide()"
       >
-        <img class="slider__slide-img" [src]="screenshot.image" alt="full size game image">
-      </li>
-    </ul>
+        <svg width="12px" height="12px" viewBox="0 0 12 12" enable-background="new 0 0 12 12" id="Слой_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><polygon fill="#1D1D1B" points="8.1464844,12 2.1464844,6 8.1464844,0 8.8535156,0.7070313 3.5605469,6 8.8535156,11.2929688 "/></svg>
+      </button>
+      <ul class="slider__slides" #slides>
+        <li class="slider__slide"
+            data-active *ngFor="let screenshot of screenshots; let index = index"
+            [ngClass]="{'slider__slide_active': activeSlideIndex === index}"
+        >
+          <img class="slider__slide-img" [src]="screenshot.image" alt="full size game image">
+        </li>
+      </ul>
+    </div>
   </div>
   <div class="slider__thumbnails-wrapper">
     <ul class="slider__thumbnails">

@@ -8,8 +8,15 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 .slider__slides-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider__slides-container {
   max-width: 60%;
   position: relative;
   flex-grow: 1;
@@ -57,7 +64,6 @@
   max-height: 400px;
   display: flex;
   list-style: none;
-  align-items: center;
   justify-content: flex-start;
   transition: 0.3s ease-in-out;
 }
