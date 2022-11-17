@@ -53,7 +53,7 @@ export class FilterSelectorComponent implements OnInit {
 
   setOrdering (option: string) {
     this.setCurrentOption(this.optionMap[option]);
-    this.router.navigate([], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {filter: this.currentOption}}).then(r => console.log('ok', this.router.url));
+    this.router.navigate([], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {filter: this.currentOption}}).then();
 
     this.isOpen = false;
   }
