@@ -19,7 +19,10 @@ export interface GameCard extends Card {
 })
 export class GamesPageComponent implements OnInit {
   @Select(GameSelectors.getAllGames)
-  games$: Observable<Game[]>
+  games$: Observable<Game[]>;
+
+  @Select(GameSelectors.getLoadingStatus)
+  isLoading$: Observable<boolean>;
 
   card: GameCard = {cardType: CardTypeEnum.game, results: []};
   title = 'Games';

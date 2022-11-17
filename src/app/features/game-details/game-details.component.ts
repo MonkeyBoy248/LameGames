@@ -16,10 +16,13 @@ export class GameDetailsComponent implements OnInit {
   destroy$ = new Subject<void>();
   gameDetails: Game;
   gameId: string;
-  isLoading = true;
+  isLoading: Observable<boolean>;
 
   @Select(GameSelectors.getGameDetails)
   gameDetails$: Observable<Game>
+
+  @Select(GameSelectors.getLoadingStatus)
+  isLoading$: Observable<boolean>;
 
   constructor(
     private gamesService: GamesService,
@@ -32,10 +35,6 @@ export class GameDetailsComponent implements OnInit {
     this.store.dispatch(new Games.getDetailById(gameId!));
     this.gameDetails$.subscribe(details => {
       this.gameDetails = details
-
-      if (details.id === Number(gameId)) {
-        this.isLoading = false;
-      }
     });
   }
 

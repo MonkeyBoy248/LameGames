@@ -1,4 +1,4 @@
-<div class="details__wrapper" *ngIf="gameDetails && !isLoading; else loader">
+<div class="details__wrapper" *ngIf="gameDetails && !(isLoading$ | async); else loader">
   <div class="details__game-banner" [ngStyle]="{'background-color': gameDetails.dominant_color}">
     <img *ngIf="gameDetails.background_image" [src]="gameDetails.background_image" alt="{{gameDetails.name}}">
   </div>

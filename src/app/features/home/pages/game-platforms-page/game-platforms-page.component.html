@@ -1,4 +1,9 @@
-<h2 class="game-platforms__title _page-title">{{title}}</h2>
-<app-main-content [data]="platformCard">
-</app-main-content>
+<ng-container *ngIf="!(isLoading$ | async); else loader">
+  <h2 class="game-platforms__title _page-title">{{title}}</h2>
+  <app-main-content [data]="platformCard"></app-main-content>
+</ng-container>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
 

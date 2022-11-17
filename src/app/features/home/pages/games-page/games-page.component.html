@@ -1,4 +1,9 @@
-<h2 class="games__title _page-title">{{title}}</h2>
-<app-filter-selector [allGames]="card.results"></app-filter-selector>
-<app-main-content [data]="card"></app-main-content>
+<ng-container *ngIf="!(isLoading$ | async); else loader">
+  <h2 class="games__title _page-title">{{title}}</h2>
+  <app-filter-selector [allGames]="card.results"></app-filter-selector>
+  <app-main-content [data]="card"></app-main-content>
+</ng-container>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
 
