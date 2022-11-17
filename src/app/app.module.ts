@@ -8,8 +8,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ApiKeyInterceptor} from "./core/interceptor/api-key.interceptor";
 import {NgxsReduxDevtoolsPluginModule} from "@ngxs/devtools-plugin";
 import {NgxsLoggerPluginModule} from "@ngxs/logger-plugin";
-import { NgxsModule } from '@ngxs/store';
+import { NgxsModule } from '@ngxs/store'
 import {GameState} from "../shared/state/game/game.state";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {GameState} from "../shared/state/game/game.state";
     CoreModule,
     SharedModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
     NgxsModule.forRoot([
