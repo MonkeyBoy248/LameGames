@@ -3,8 +3,8 @@ import {GamesService} from "../../../../core/services/games/games.service";
 import {CardTypeEnum, Game} from "../../../../shared/interfaces/game";
 import {Card} from "../../../../core/interfaces/card";
 import {ActivatedRoute} from "@angular/router";
-import {mergeMap, Subject, Subscription, switchMap, takeUntil} from "rxjs";
-import {Store} from '@ngxs/store';
+import { Observable, Subject, Subscription, takeUntil } from "rxjs";
+import { Select, Store } from '@ngxs/store';
 import {Games} from "../../../../../shared/state/game/game.actions";
 import {GameSelectors} from "../../../../../shared/state/game/game.selectors";
 
@@ -18,21 +18,31 @@ export interface GameCard extends Card {
   styleUrls: ['./games-page.component.scss']
 })
 export class GamesPageComponent implements OnInit {
+  @Select(GameSelectors.getAllGames)
+  games$: Observable<Game[]>
+
   card: GameCard = {cardType: CardTypeEnum.game, results: []};
   title = 'Games';
   destroy$ = new Subject<void>();
-  routerSub: Subscription;
   cache: Game[];
-  constructor(private gamesService: GamesService, private route: ActivatedRoute, private store: Store) { }
+  routerSub: Subscription;
 
-  getSortedGames () {
+  constructor(private gamesService: GamesService,
+              private route: ActivatedRoute,
+              private store: Store) { }
+
+  getAllGames () {
     this.routerSub = this.route.queryParams.pipe(
-      switchMap(params =>
-        this.store.dispatch(new Games.getAll(params['order']))
-          .pipe(mergeMap(() => this.store.select(GameSelectors.getAllGames)))
-      ),
+    ).subscribe(params => {
+      console.log('params', params)
+      this.store.dispatch(new Games.getAll(params['query']))
+    })
+
+    this.games$.pipe(
       takeUntil(this.destroy$)
-    ).subscribe(games => {
+    ).subscribe
+    (games => {
+      console.log('games', games);
       this.card = {
         cardType: CardTypeEnum.game,
         results: games
@@ -41,7 +51,7 @@ export class GamesPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getSortedGames();
+    this.getAllGames();
   }
 
   ngOnDestroy () {

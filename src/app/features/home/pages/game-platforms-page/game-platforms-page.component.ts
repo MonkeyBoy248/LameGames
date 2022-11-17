@@ -26,9 +26,7 @@ export class GamePlatformsPageComponent implements OnInit {
 
   getAllPlatforms () {
     this.gamePlatformsService.getAllPlatforms(this.allPlatformRequest).subscribe(platforms => {
-      console.log('platforms', platforms);
       this.platformCard.results = platforms;
-      console.log('all', this.platformCard);
     })
   }
 

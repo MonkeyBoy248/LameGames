@@ -22,9 +22,7 @@ export class DevPageComponent implements OnInit {
 
   getAllDevs () {
     this.devService.getAllDevelopers(this.allDevsRequest).subscribe(dev => {
-      console.log('devs', dev);
       this.card.results = dev;
-      console.log('all', this.card);
     })
   }
 

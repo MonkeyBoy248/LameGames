@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {GamesService} from "../../core/services/games/games.service";
 import {Game} from "../../shared/interfaces/game";
-import {mergeMap, Subject, Subscription, switchMap, takeUntil} from "rxjs";
+import { Observable, Subject } from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {Games} from "../../../shared/state/game/game.actions";
 import {GameSelectors} from "../../../shared/state/game/game.selectors";
-import {Store} from "@ngxs/store";
+import { Select, Store } from "@ngxs/store";
 
 @Component({
   selector: 'app-game-details',
@@ -13,11 +13,13 @@ import {Store} from "@ngxs/store";
   styleUrls: ['./game-details.component.scss']
 })
 export class GameDetailsComponent implements OnInit {
-  gameSub: Subscription;
-  routerSub: Subscription;
   destroy$ = new Subject<void>();
   gameDetails: Game;
   gameId: string;
+  isLoading = true;
+
+  @Select(GameSelectors.getGameDetails)
+  gameDetails$: Observable<Game>
 
   constructor(
     private gamesService: GamesService,
@@ -26,16 +28,15 @@ export class GameDetailsComponent implements OnInit {
   ) { }
 
   getGameDetails () {
-    this.routerSub = this.route.params.pipe(
-      switchMap(params =>
-        this.store.dispatch(new Games.getDetailById(params['id']))
-          .pipe(mergeMap(() => this.store.select(GameSelectors.getGameDetails)))
-      ),
-      takeUntil(this.destroy$)
-    ).subscribe(game => {
-      console.log('game', game)
-      this.gameDetails = game;
-    })
+    const gameId = this.route.snapshot.paramMap.get('id')!;
+    this.store.dispatch(new Games.getDetailById(gameId!));
+    this.gameDetails$.subscribe(details => {
+      this.gameDetails = details
+
+      if (details.id === Number(gameId)) {
+        this.isLoading = false;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -45,6 +46,5 @@ export class GameDetailsComponent implements OnInit {
   ngOnDestroy () {
     this.destroy$.next();
     this.destroy$.complete();
-    this.routerSub.unsubscribe();
   }
 }
