@@ -1,6 +1,6 @@
 <div class="main__wrapper">
-  <div class="main__items-container" #main>
-    <ng-container *ngFor="let item of data.results; trackBy: trackById" [ngSwitch]="data.cardType">
+  <div class="main__items-container">
+    <ng-container *ngFor="let item of data.results | arraySort:(sortingOption$ | async)!:'name'; trackBy: trackById" [ngSwitch]="data.cardType">
       <app-card-game *ngSwitchCase="'game'" [game]="item"></app-card-game>
       <app-card-dev *ngSwitchCase="'dev'" [dev]="item"></app-card-dev>
       <app-card-dev *ngSwitchCase="'platform'" [dev]="item"></app-card-dev>
