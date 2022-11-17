@@ -9,6 +9,9 @@ import {NavigationComponent} from "./components/navigation/navigation.component"
 import {SidebarComponent} from "./components/sidebar/sidebar.component";
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import { ArraySortPipe } from './pipes/array-sort.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -19,18 +22,22 @@ import {FormsModule} from "@angular/forms";
     HeaderComponent,
     NavigationComponent,
     SidebarComponent,
+    ArraySortPipe,
+    LoaderComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     IntegerFormatPipe,
     MainContentComponent,
     CardDevComponent,
     HeaderComponent,
-    NavigationComponent
+    NavigationComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule { }
