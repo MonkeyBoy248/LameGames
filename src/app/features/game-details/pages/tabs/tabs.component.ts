@@ -8,6 +8,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./tabs.component.scss']
 })
 export class TabsComponent implements OnInit {
+  @Input() id: string;
+
   tabs: NavigationItem[] = [
     {
       title: 'About',
@@ -30,7 +32,5 @@ export class TabsComponent implements OnInit {
   constructor(public route: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
-
-  @Input() id: string = '';
+  };
 }
