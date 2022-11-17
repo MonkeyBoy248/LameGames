@@ -1,19 +1,13 @@
 export namespace Games {
   export class getAll {
-    constructor(public ordering: string) {
+    constructor(public query?: string) {
     }
-    static readonly type = '[Game] setAllGames';
+    static readonly type = '[Game] getAllGames';
   }
 
   export class getDetailById {
-    static readonly type = '[Game] setGameDetails';
+    static readonly type = '[Game] getGameDetails';
     constructor(public id: string) {
-    }
-  }
-
-  export class getQueried {
-    static readonly type = '[Game] getQueriedGame';
-    constructor(public query: string) {
     }
   }
 }
