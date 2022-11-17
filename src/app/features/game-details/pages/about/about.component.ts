@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Game} from "../../../../shared/interfaces/game"
-import {Subscription} from "rxjs";
-import {Store} from "@ngxs/store";
+import { Observable } from "rxjs";
+import { Select } from "@ngxs/store";
 import {GameSelectors} from "../../../../../shared/state/game/game.selectors";
 
 @Component({
@@ -10,32 +10,31 @@ import {GameSelectors} from "../../../../../shared/state/game/game.selectors";
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-  gameMetadata: Game;
-  gameSub: Subscription;
-  constructor(private store: Store) { }
+  @Select (GameSelectors.getGameDetails)
+  gameDetails$: Observable<Game>;
 
-  ngOnInit(): void {
-    this.gameSub = this.store.select(GameSelectors.getGameDetails)
-        .subscribe(game => this.gameMetadata = game)
+  constructor() { }
+
+  ngOnInit (): void {
   }
 
   isEmptyArray <T>(array: T[]): boolean {
+    if (!array) {
+      return false;
+    }
     return array.length > 0
   }
 
-  ngOnDestroy (){
-    this.gameSub.unsubscribe();
-  }
-
-  setRatingColor (value: number) {
-    if (value > 69) {
-      return '#49ab56';
-    } else if (value > 50) {
-      return '#f1cf45';
-    } else if (value > 30) {
-      return '#de8928';
-    } else {
-      return '#E04040FF';
+  setRatingColor (value: number): string {
+    switch (true) {
+      case value > 69:
+        return '#49ab56';
+      case value > 50:
+        return '#f1cf45';
+      case value > 30:
+        return '#de8928';
+      default:
+        return '#E04040FF';
     }
   }
 }
