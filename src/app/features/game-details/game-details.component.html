@@ -1,4 +1,4 @@
-<div class="details__wrapper" *ngIf="gameDetails">
+<div class="details__wrapper" *ngIf="gameDetails && !isLoading; else loader">
   <div class="details__game-banner" [ngStyle]="{'background-color': gameDetails.dominant_color}">
     <img *ngIf="gameDetails.background_image" [src]="gameDetails.background_image" alt="{{gameDetails.name}}">
   </div>
@@ -6,7 +6,7 @@
     <header class="details__header">
       <div class="details__header-wrapper">
         <div class="details__header-meta">
-          <div class="details__header-release-date">{{gameDetails.released | date}}</div>
+          <div *ngIf='gameDetails.released' class="details__header-release-date">{{gameDetails.released | date}}</div>
           <div class="details__header-platforms">
             <ul class="details__platforms">
               <li class="details__platform" *ngFor="let platform of gameDetails.parent_platforms ">
@@ -22,5 +22,9 @@
       <app-pie-chart [ratings]="gameDetails.ratings"></app-pie-chart>
     </header>
     <app-tabs [id]="gameId"></app-tabs>
+    <router-outlet></router-outlet>
   </div>
 </div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
