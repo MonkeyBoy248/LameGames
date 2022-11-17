@@ -10,4 +10,10 @@ export namespace Games {
     constructor(public id: string) {
     }
   }
+
+  export class getLoadingStatus {
+    static readonly type = '[Game] getLoadingStatus';
+    constructor(public isLoading: boolean) {
+    }
+  }
 }

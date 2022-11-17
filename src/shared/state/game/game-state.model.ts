@@ -8,4 +8,5 @@ export interface Details {
 export interface GameStateModel {
   games: Game[];
   details: Details;
+  isLoading: boolean;
 }

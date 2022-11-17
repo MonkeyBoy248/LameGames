@@ -23,4 +23,9 @@ export class GameSelectors {
   static getGameTrailers (state: GameStateModel): Trailer[] {
     return [...state.details.data.trailers]
   }
+
+  @Selector([GameState])
+  static getLoadingStatus (state: GameStateModel): boolean {
+    return state.isLoading;
+  }
 }

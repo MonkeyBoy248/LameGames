@@ -10,8 +10,9 @@ const defaults = {
   games: [],
   details: {
     id: null,
-    data: {} as Game
-  }
+    data: {} as Game,
+  },
+  isLoading: false
 };
 
 @State<GameStateModel>({
@@ -22,6 +23,7 @@ const defaults = {
 export class GameState {
   constructor(private gameService: GamesService) {
   }
+
   @Action(Games.getAll)
   async getAll ({ patchState }: StateContext<GameStateModel>, { query }: Games.getAll) {
     const games = await lastValueFrom(this.gameService.getAllGames(query));
@@ -42,8 +44,16 @@ export class GameState {
     patchState({
         details: {
           id: gameDetails.id,
-          data: gameDetails
+          data: gameDetails,
         }
       })
+  }
+
+  @Action(Games.getLoadingStatus)
+  async getLoadingStatus ({ patchState }: StateContext<GameStateModel>, { isLoading }: Games.getLoadingStatus) {
+
+    patchState({
+      isLoading
+    })
   }
 }

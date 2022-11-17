@@ -12,6 +12,7 @@ import { NgxsModule } from '@ngxs/store'
 import {GameState} from "../shared/state/game/game.state";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoaderInterceptor } from './core/interceptor/loader.interceptor';
 
 
 @NgModule({
@@ -36,6 +37,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiKeyInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
       multi: true
     }
   ],
