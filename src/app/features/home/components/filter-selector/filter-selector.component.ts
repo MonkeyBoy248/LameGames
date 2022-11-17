@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Game} from "../../../../shared/interfaces/game";
-import {SortService} from "../../../../core/services/sort/sort.service";
 import {SortOption} from "../../models/sortOption";
 import {ActivatedRoute, Router} from "@angular/router";
 
@@ -11,6 +10,9 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 
 export class FilterSelectorComponent implements OnInit {
+  @Input() allGames: Game[];
+  @Output() setOrderingEvent = new EventEmitter<string>();
+
   isOpen = false;
   currentOption: string;
   optionMap: SortOption = {
@@ -25,12 +27,11 @@ export class FilterSelectorComponent implements OnInit {
     'Rating'
   ];
 
-  constructor(private filterService: SortService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit (): void {
     this.initializeSortOption();
     this.setOptionText();
-    console.log(this.currentOption);
   }
 
   showDropdown (): void {
@@ -47,27 +48,13 @@ export class FilterSelectorComponent implements OnInit {
   }
 
   initializeSortOption () {
-    this.route.queryParams.subscribe(params => {
-      console.log('param', params['order'])
-      if (!params['order']) {
-        this.currentOption = 'name';
-
-        return;
-      }
-
-      this.currentOption = params['order'];
-      console.log('current params', this.currentOption);
-    })
+    this.currentOption = this.route.snapshot.queryParamMap.get('filter') ?? 'name';
   }
 
   setOrdering (option: string) {
     this.setCurrentOption(this.optionMap[option]);
-    this.router.navigate([this.router.url.split('?')[0]], {queryParams: {order: this.currentOption}}).then(r => console.log('ok', this.router.url));
-    // this.setOrderingEvent.emit(this.optionMap[option]);
+    this.router.navigate([], {relativeTo: this.route, queryParamsHandling: 'merge', queryParams: {filter: this.currentOption}}).then(r => console.log('ok', this.router.url));
 
     this.isOpen = false;
   }
-
-  @Input() allGames: Game[];
-  @Output() setOrderingEvent = new EventEmitter<string>();
 }
