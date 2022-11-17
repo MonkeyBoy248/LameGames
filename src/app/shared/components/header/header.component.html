@@ -1,9 +1,9 @@
 <div class="header__wrapper">
-  <a routerLink="/home/games" class="header__logo">
+  <a routerLink="/" class="header__logo">
     <span class="header__logo-start">Lame</span>
     <span class="header__logo-end">Games</span>
   </a>
-  <div class="header__search-area" [ngClass]="{'header__search-area_transparent': isTransparent()}">
+  <div class="header__search-area">
      <span class="header__search-svg-wrapper">
       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
            viewBox="0 0 487.95 487.95" style="enable-background:new 0 0 487.95 487.95;" xml:space="preserve">
@@ -19,11 +19,10 @@
     <form class="header__search-form"
           (submit)="redirectToSearch(search.value)"
           autocomplete="off"
-          #form="ngForm"
     >
       <label class="header__search-label _hidden" for="header__search-input">Search</label>
-      <input class="header__search-input" #search type="text" name="search" id="header__search-input" placeholder="Search">
-      <button class="header__submit-button" type="submit">Search</button>
+      <input class="header__search-input" [formControl]="search" type="text" name="search" id="header__search-input" placeholder="Search">
+      <button class="header__submit-button" type="submit">/</button>
     </form>
   </div>
 </div>
