@@ -1,57 +1,17 @@
-:root {
-  --primary: #F6F5F5;
-  --black: #000000;
-  --orange: #E89924;
-  --grey: #878787;
-  --top-border-radius: 20px 20px 0 0;
-  --bottom-border-radius: 0 0 20px 20px;
-  --secondary-orange: #ffb700;
-}
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 5 | @use '@angular/material' as mat;
+ *   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *   '
+ *   styles.scss 5:1  root stylesheet */
 
-* {
-  box-sizing: border-box;
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 5 \2502  @use '@angular/material' as mat;\a   \2502  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   styles.scss 5:1  root stylesheet";
 }
-
-body {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  position: relative;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  background-color: var(--primary);
-}
-
-@font-face {
-  font-family: InterRegular;
-  src: url("./assets/fonts/Inter/static/Inter-Regular.ttf");
-}
-._container {
-  margin: 0 auto;
-  padding: 10px 20px;
-  max-width: 1300px;
-  width: 100%;
-}
-
-._hidden {
-  display: none;
-}
-
-h1, h2, h3, h4, h5, h6, p, ul {
-  margin: 0;
-  padding: 0;
-}
-
-._page-title {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 77px;
-  margin-bottom: 40px;
-}
-
-._block {
-  overflow: hidden;
-}
-
-/*# sourceMappingURL=styles.css.map */
