@@ -8,10 +8,11 @@
 }
 
 .header__wrapper {
-  padding: 48px 40px;
+  padding: 24px 40px;
   display: flex;
   align-items: center;
   gap: 107px;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 .header__logo {
   font-style: normal;
@@ -22,7 +23,7 @@
   text-decoration: none;
 }
 .header__logo-start {
-  color: var(--black);
+  color: var(--primary);
 }
 .header__logo-end {
   color: var(--orange);
@@ -35,23 +36,23 @@
   padding-inline: 24px;
   padding-top: 11px;
   padding-bottom: 10px;
-  background-color: var(--grey);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--black);
   border-radius: 20px;
   border: none;
+  opacity: 0.4;
   transition: 0.3s ease-in-out;
 }
 .header__search-area:hover, .header__search-area:hover input {
-  background-color: var(--black);
+  background-color: var(--primary);
   opacity: 1;
+  color: var(--black);
 }
 .header__search-area:focus-within, .header__search-area:focus-within input {
   outline: none;
-  background-color: var(--black);
+  color: var(--black);
+  background-color: var(--primary);
   opacity: 1;
-}
-.header__search-area_transparent {
-  opacity: 0.4;
 }
 .header__search-form {
   width: 100%;
@@ -66,27 +67,27 @@
 .header__search-svg-wrapper svg {
   width: 16px;
   height: 16px;
-  fill: var(--primary);
+  fill: var(--black);
 }
 .header__search-input {
   width: 100%;
   padding-inline: 24px;
-  background-color: var(--grey);
-  color: var(--primary);
+  background-color: var(--primary);
+  color: var(--black);
   border-radius: 20px;
   border: none;
   transition: 0.3s ease-in-out;
 }
 .header__search-input::placeholder {
-  color: var(--primary);
+  color: var(--black);
 }
 .header__submit-button {
-  border: none;
-  border-radius: 10px;
-  padding: 5px 8px;
+  border-radius: 5px;
+  padding: 3px 8px;
   color: var(--black);
   cursor: pointer;
-  background-color: var(--primary);
+  border: 2px solid var(--black);
+  background-color: transparent;
   transition: 0.3s ease-in-out;
 }
 .header__submit-button:hover {

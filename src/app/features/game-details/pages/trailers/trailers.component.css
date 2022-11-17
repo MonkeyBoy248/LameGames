@@ -19,10 +19,14 @@
   border-radius: 10px;
 }
 .trailers__empty-message {
+  padding-block: 30px;
+}
+.trailers__empty-message-text {
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 29px;
+  font-size: 28px;
 }
 .trailers__title {
   font-size: 16px;

@@ -25,7 +25,12 @@
   }
 
   &__empty-message {
+    padding-block: 30px;
+  }
+
+  &__empty-message-text {
     @include mixins.text;
+    font-size: 28px;
   }
 
   &__title {

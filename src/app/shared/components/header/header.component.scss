@@ -11,10 +11,11 @@
 
 .header {
   &__wrapper {
-    padding: 48px 40px;
+    padding: 24px 40px;
     display: flex;
     align-items: center;
     gap: 107px;
+    background-color: rgb(0, 0, 0, .8);
   }
 
   &__logo {
@@ -23,7 +24,7 @@
   }
 
   &__logo-start {
-    color: var(--black);
+    color: var(--primary);
   }
 
   &__logo-end {
@@ -38,25 +39,24 @@
     padding-inline: 24px;
     padding-top: 11px;
     padding-bottom: 10px;
-    background-color: var(--grey);
-    color: var(--primary);
+    background-color: var(--primary);
+    color: var(--black);
     border-radius: 20px;
     border: none;
+    opacity: .4;
     transition: .3s ease-in-out;
 
     &:hover, &:hover input {
-      background-color: var(--black);
+      background-color: var(--primary);
       opacity: 1;
+      color: var(--black);
     }
 
     &:focus-within, &:focus-within input {
       outline: none;
-      background-color: var(--black);
+      color: var(--black);
+      background-color: var(--primary);
       opacity: 1;
-    }
-
-    &_transparent {
-      opacity: 0.4;
     }
   }
 
@@ -74,31 +74,31 @@
     svg {
       width: 16px;
       height: 16px;
-      fill: var(--primary);
+      fill: var(--black);
     }
   }
 
   &__search-input {
     width: 100%;
     padding-inline: 24px;
-    background-color: var(--grey);
-    color: var(--primary);
+    background-color: var(--primary);
+    color: var(--black);
     border-radius: 20px;
     border: none;
     transition: .3s ease-in-out;
 
     &::placeholder {
-      color: var(--primary);
+      color: var(--black);
     }
   }
 
   &__submit-button {
-    border: none;
-    border-radius: 10px;
-    padding: 5px 8px;
+    border-radius: 5px;
+    padding: 3px 8px;
     color: var(--black);
     cursor: pointer;
-    background-color: var(--primary);
+    border: 2px solid var(--black);
+    background-color: transparent;
     transition: .3s ease-in-out;
 
     &:hover {
