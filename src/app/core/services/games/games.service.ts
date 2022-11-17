@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {RawgApiService} from "../rawgAPI/rawg-api.service";
-import {forkJoin, map, Observable, tap} from "rxjs";
-import {SortService} from "../sort/sort.service";
+import { map, Observable, zip } from "rxjs";
 import {Game} from "../../../shared/interfaces/game";
 
 @Injectable({
@@ -10,38 +9,29 @@ import {Game} from "../../../shared/interfaces/game";
 export class GamesService {
   private gamesRequest = 'games';
 
-  constructor(private rawgService: RawgApiService, private filterService: SortService) { }
+  constructor(private rawgService: RawgApiService) { }
 
-  getAllGames (ordering?: string, query?: string): Observable<Game[]> {
+  getAllGames (query?: string): Observable<Game[]> {
     return this.rawgService.get<any>(this.gamesRequest, query).pipe(
-      tap(game => console.log('game', game)),
-      map(game => {
-        if (!ordering) {
-          return this.filterService.sortByOption('name', game.results);
-        }
-
-        return this.filterService.sortByOption(ordering as keyof Game, game.results);
-      }),
-    )
+      map(game => game.results))
   }
 
   getGameDetail (id: string): Observable<Game> {
     const detailsUrl = `${this.gamesRequest}/${id}`;
-    const details = this.rawgService.get<any>(detailsUrl);
-    const trailers = this.rawgService.get<any>(`${detailsUrl}/movies`);
-    const screenshots = this.rawgService.get<any>(`${detailsUrl}/screenshots`);
+    const details$ = this.rawgService.get<any>(detailsUrl);
+    const trailers$ = this.rawgService.get<any>(`${detailsUrl}/movies`);
+    const screenshots$ = this.rawgService.get<any>(`${detailsUrl}/screenshots`);
 
-    return forkJoin({
-      details, trailers, screenshots
-    }).pipe(
-      map((response) => {
+    return zip(
+      details$, trailers$, screenshots$,
+    ).pipe(
+      map(([details, trailers, screenshots]) => {
         return {
-          ...response['details'],
-          screenshots: response['screenshots']?.results,
-          trailers: response['trailers']?.results
+          ...details,
+          trailers: trailers.results,
+          screenshots: screenshots.results,
         }
       }),
-      tap(response => console.log('res', response))
     )
   }
 }
