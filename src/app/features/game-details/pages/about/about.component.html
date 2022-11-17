@@ -1,76 +1,76 @@
-<div class="about__wrapper">
+<div class="about__wrapper" *ngIf="gameDetails$ | async as gameDetails">
   <div class="about__data-wrapper">
-    <div class="about__description" *ngIf="gameMetadata.description_raw">
+    <div class="about__description" *ngIf="gameDetails.description_raw">
       <p class="about__description-title">Description</p>
-      <p class="about__description-text">{{gameMetadata.description_raw}}</p>
+      <p class="about__description-text">{{gameDetails.description_raw}}</p>
     </div>
-    <div class="meta__metadata">
-      <div class="meta__platforms _metadata">
-        <p class="meta__platforms-title _meta-title">Platforms</p>
-        <ul class="meta__platforms-list _metadata-list" *ngIf="isEmptyArray(gameMetadata.platforms) else unknown">
-          <li class="meta__platform" *ngFor="let platform of gameMetadata.platforms; let last = last">
+    <div class="info__wrapper">
+      <div class="info__platforms _data">
+        <p class="info__platforms-title _data-title">Platforms</p>
+        <ul class="info__platforms-list _data-list" *ngIf="isEmptyArray(gameDetails.platforms) else unknown">
+          <li class="info__platform" *ngFor="let platform of gameDetails.platforms; let last = last">
             {{platform.platform.name}}<span *ngIf="!last">,</span>
           </li>
         </ul>
       </div>
-      <div class="meta__metacritic _metadata" *ngIf="gameMetadata.metacritic">
-        <p class="meta__metacritic-title _meta-title">Metascore</p>
-        <div class="meta__metascore" [ngStyle]="{'background-color': setRatingColor(gameMetadata.metacritic)}">{{gameMetadata.metacritic}}</div>
+      <div class="info__metacritic _data" *ngIf="gameDetails.metacritic">
+        <p class="info__metacritic-title _data-title">infoscore</p>
+        <div class="info__metascore" [ngStyle]="{'background-color': setRatingColor(gameDetails.metacritic)}">{{gameDetails.metacritic}}</div>
       </div>
-      <div class="meta__genre-wrapper _metadata">
-        <p class="meta__genre-title _meta-title">Genre</p>
-        <ul class="meta__genre-list _metadata-list" *ngIf="isEmptyArray(gameMetadata.genres) else unknown">
-          <li class="meta__genre" *ngFor="let genre of gameMetadata.genres; let last = last">
+      <div class="info__genre-wrapper _data">
+        <p class="info__genre-title _data-title">Genre</p>
+        <ul class="info__genre-list _data-list" *ngIf="isEmptyArray(gameDetails.genres) else unknown">
+          <li class="info__genre" *ngFor="let genre of gameDetails.genres; let last = last">
             {{genre.name}}<span *ngIf="!last">,</span>
           </li>
         </ul>
       </div>
-      <div class="meta__release-date _metadata">
-        <p class="meta__release-date-title _meta-title">Release date</p>
-        <p class="meta__released">{{gameMetadata.released | date}}</p>
+      <div class="info__release-date _data">
+        <p class="info__release-date-title _data-title">Release date</p>
+        <p class="info__released">{{gameDetails.released | date}}</p>
       </div>
-      <div class="meta__developer-wrapper _metadata">
-        <p class="meta__developer-title _meta-title">Developer</p>
-        <ul class="meta__developer-list _metadata-list" *ngIf="isEmptyArray(gameMetadata.developers) else unknown">
-          <li class="meta__developer" *ngFor="let dev of gameMetadata.developers; let last = last">
+      <div class="info__developer-wrapper _data">
+        <p class="info__developer-title _data-title">Developer</p>
+        <ul class="info__developer-list _data-list" *ngIf="isEmptyArray(gameDetails.developers) else unknown">
+          <li class="info__developer" *ngFor="let dev of gameDetails.developers; let last = last">
             {{dev.name}}<span *ngIf="!last">,</span>
           </li>
         </ul>
       </div>
-      <div class="meta__publisher-wrapper _metadata">
-        <p class="meta__platforms-title _meta-title">Publisher</p>
-        <ul class="meta__publisher-list _metadata-list" *ngIf="isEmptyArray(gameMetadata.publishers) else unknown">
-          <li class="meta__publisher" *ngFor="let publisher of gameMetadata.publishers; let last = last">
+      <div class="info__publisher-wrapper _data">
+        <p class="info__platforms-title _data-title">Publisher</p>
+        <ul class="info__publisher-list _data-list" *ngIf="isEmptyArray(gameDetails.publishers) else unknown">
+          <li class="info__publisher" *ngFor="let publisher of gameDetails.publishers; let last = last">
             {{publisher.name}}<span *ngIf="!last">,</span>
           </li>
         </ul>
       </div>
-      <div class="meta__esrb _metadata">
-        <p class="meta__esrb-title _meta-title">Age rating</p>
-        <p class="meta__ersb-rating" *ngIf="gameMetadata.esrb_rating else noAgeRating">{{gameMetadata.esrb_rating.name}}</p>
+      <div class="info__esrb _data">
+        <p class="info__esrb-title _data-title">Age rating</p>
+        <p class="info__ersb-rating" *ngIf="gameDetails.esrb_rating else noAgeRating">{{gameDetails.esrb_rating.name}}</p>
         <ng-template #noAgeRating>
-          <p class="meta__no-ersb">Not rated</p>
+          <p class="info__no-ersb">Not rated</p>
         </ng-template>
       </div>
-      <div class="meta__tags-wrapper _metadata_wide">
-        <p class="meta__tags-title _meta-title">Tags</p>
-        <ul class="meta__tag-list _metadata-list" *ngIf="isEmptyArray(gameMetadata.tags) else noTags">
-          <li class="meta__tag" *ngFor="let tag of gameMetadata.tags">{{tag.name}}</li>
+      <div class="info__tags-wrapper _data_wide">
+        <p class="info__tags-title _data-title">Tags</p>
+        <ul class="info__tag-list _data-list" *ngIf="isEmptyArray(gameDetails.tags) else noTags">
+          <li class="info__tag" *ngFor="let tag of gameDetails.tags">{{tag.name}}</li>
         </ul>
         <ng-template #noTags>
-          <p class="meta__no-tags">No tags</p>
+          <p class="info__no-tags">No tags</p>
         </ng-template>
       </div>
-      <div class="meta__website _metadata_wide" *ngIf="gameMetadata.website">
-        <p class="meta__website-title _meta-title">Website</p>
-        <a class="meta__website-link" [href]="gameMetadata.website" target="_blank">{{gameMetadata.website}}</a>
+      <div class="info__website _data_wide" *ngIf="gameDetails.website">
+        <p class="info__website-title _data-title">Website</p>
+        <a class="info__website-link" [href]="gameDetails.website" target="_blank">{{gameDetails.website}}</a>
       </div>
     </div>
   </div>
-  <div class="about__developers" *ngIf="isEmptyArray(gameMetadata.developers)">
-    <app-card-dev *ngFor=" let developer of gameMetadata.developers" [dev]="developer"></app-card-dev>
+  <div class="about__developers" *ngIf="isEmptyArray(gameDetails.developers)">
+    <app-card-dev *ngFor=" let developer of gameDetails.developers" [dev]="developer"></app-card-dev>
   </div>
 </div>
 <ng-template #unknown>
-  <p class="meta__unknown">Unknown</p>
+  <p class="info__unknown">Unknown</p>
 </ng-template>

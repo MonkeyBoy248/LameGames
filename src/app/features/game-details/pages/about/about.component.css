@@ -1,14 +1,14 @@
-._metadata {
+._data {
   font-size: 16px;
   line-height: 22px;
 }
 
-._metadata_wide {
+._data_wide {
   width: 100%;
   grid-column: 1/-1;
 }
 
-._metadata-list {
+._data-list {
   list-style: none;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
   gap: 5px;
 }
 
-._meta-title {
+._data-title {
   font-size: 14px;
   color: var(--grey);
   margin-bottom: 8px;
@@ -55,12 +55,12 @@
   gap: 24px;
 }
 
-.meta__metadata {
+.info__wrapper {
   display: grid;
   grid-template-columns: repeat(2, minmax(250px, 1fr));
   gap: 20px;
 }
-.meta__metascore {
+.info__metascore {
   border-radius: 50%;
   width: fit-content;
   padding: 12px;
@@ -71,17 +71,17 @@
   justify-content: center;
   color: var(--primary);
 }
-.meta__tag-list {
+.info__tag-list {
   gap: 10px;
 }
-.meta__tag {
+.info__tag {
   padding: 8px;
   color: var(--primary);
   background-color: var(--black);
   border-radius: 10px;
   font-size: 14px;
 }
-.meta__website-link {
+.info__website-link {
   color: var(--black);
   font-size: 16px;
 }
